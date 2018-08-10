@@ -97,7 +97,8 @@ else:
         return compile(data, filename, 'exec', optimize=2, dont_inherit=True)
 
     def compile_line(string):
-        return compile(string, '<string>', 'single', optimize=2, dont_inherit=True)
+        # newline appended to solve unexpected EOF issues
+        return compile(string + '\n', '<string>', 'single', optimize=2, dont_inherit=True)
 
 
 class Plugin:
