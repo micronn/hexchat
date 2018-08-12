@@ -426,6 +426,7 @@ static const setting alert_settings[] =
 	{ST_HEADER,	N_("Highlighted Messages"),0,0,0},
 	{ST_LABEL,	N_("Highlighted messages are ones where your nickname is mentioned, but also:"), 0, 0, 0, 1},
 
+	{ST_NUMBER,	N_("Do not hilight when mentioned more than:"), P_OFFINTNL(hex_irc_maxmentions_hilight), 0, (const char **)N_("nicks."), 10},
 	{ST_ENTRY,	N_("Extra words to highlight:"), P_OFFSETNL(hex_irc_extra_hilight), 0, 0, sizeof prefs.hex_irc_extra_hilight},
 	{ST_ENTRY,	N_("Nick names not to highlight:"), P_OFFSETNL(hex_irc_no_hilight), 0, 0, sizeof prefs.hex_irc_no_hilight},
 	{ST_ENTRY,	N_("Nick names to always highlight:"), P_OFFSETNL(hex_irc_nick_hilight), 0, 0, sizeof prefs.hex_irc_nick_hilight},
@@ -2291,7 +2292,7 @@ setup_window_open (void)
 	char buf[128];
 
 	g_snprintf(buf, sizeof(buf), _("Preferences - %s"), _(DISPLAY_NAME));
-	win = gtkutil_window_new (buf, "prefs", 0, 600, 2);
+	win = gtkutil_window_new (buf, "prefs", 0, 620, 2);
 
 	vbox = gtk_vbox_new (FALSE, 5);
 	gtk_container_set_border_width (GTK_CONTAINER (vbox), 6);

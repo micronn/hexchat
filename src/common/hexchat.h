@@ -267,6 +267,7 @@ struct hexchatprefs
 	int hex_identd_port;
 	int hex_irc_ban_type;
 	int hex_irc_join_delay;
+	int hex_irc_maxmentions_hilight;
 	int hex_irc_notice_pos;
 	int hex_net_ping_timeout;
 	int hex_net_proxy_port;

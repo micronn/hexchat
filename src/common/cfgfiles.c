@@ -510,6 +510,7 @@ const struct prefs vars[] =
 	{"irc_join_delay", P_OFFINT (hex_irc_join_delay), TYPE_INT},
 	{"irc_logging", P_OFFINT (hex_irc_logging), TYPE_BOOL},
 	{"irc_logmask", P_OFFSET (hex_irc_logmask), TYPE_STR},
+	{"irc_maxmentions_hilight", P_OFFINT (hex_irc_maxmentions_hilight), TYPE_INT},
 	{"irc_nick1", P_OFFSET (hex_irc_nick1), TYPE_STR},
 	{"irc_nick2", P_OFFSET (hex_irc_nick2), TYPE_STR},
 	{"irc_nick3", P_OFFSET (hex_irc_nick3), TYPE_STR},
@@ -832,6 +833,7 @@ load_default_config(void)
 	prefs.hex_gui_win_width = 640;
 	prefs.hex_irc_ban_type = 1;
 	prefs.hex_irc_join_delay = 5;
+	prefs.hex_irc_maxmentions_hilight = 10;
 	prefs.hex_net_ping_timeout = 60;
 	prefs.hex_net_reconnect_delay = 10;
 	prefs.hex_notify_timeout = 15;

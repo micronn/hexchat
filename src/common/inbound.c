@@ -301,6 +301,22 @@ alert_match_text (char *text, char *masks)
 	}
 }
 
+typedef struct
+{
+	char *text;
+	int count;
+	int stop_max;
+} mentiondata;
+
+static int
+mentions_count_cb (struct User *user, mentiondata *data)
+{
+	if (alert_match_text (data->text, user->nick))
+		data->count++;
+
+	return (data->count < data->stop_max);
+}
+
 static int
 is_hilight (char *from, char *text, session *sess, server *serv)
 {
@@ -313,7 +329,17 @@ is_hilight (char *from, char *text, session *sess, server *serv)
 		 alert_match_text (text, prefs.hex_irc_extra_hilight) ||
 		 alert_match_word (from, prefs.hex_irc_nick_hilight))
 	{
+		mentiondata data;
+		data.text = text;
+		data.count = 0;
+		data.stop_max = prefs.hex_irc_maxmentions_hilight;
+		tree_foreach (sess->usertree, (tree_traverse_func *)mentions_count_cb, &data);
+
 		g_free (text);
+
+		if (data.count >= prefs.hex_irc_maxmentions_hilight)
+			return 0;
+
 		if (sess != current_tab)
 		{
 			sess->tab_state |= TAB_STATE_NEW_HILIGHT;
