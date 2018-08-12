@@ -671,8 +671,15 @@ process_numeric (session * sess, int n,
 		fe_update_mode_buttons (sess, 'c', '-');
 		fe_update_mode_buttons (sess, 't', '-');
 		fe_update_mode_buttons (sess, 'n', '-');
+		fe_update_mode_buttons (sess, 's', '-');
 		fe_update_mode_buttons (sess, 'i', '-');
+		fe_update_mode_buttons (sess, 'u', '-');
 		fe_update_mode_buttons (sess, 'm', '-');
+		fe_update_mode_buttons (sess, 'R', '-');
+		fe_update_mode_buttons (sess, 'M', '-');
+		fe_update_mode_buttons (sess, 'W', '-');
+		fe_update_mode_buttons (sess, 'C', '-');
+		fe_update_mode_buttons (sess, 'N', '-');
 		fe_update_mode_buttons (sess, 'l', '-');
 		fe_update_mode_buttons (sess, 'k', '-');
 		handle_mode (serv, word, word_eol, "", TRUE, tags_data);

@@ -79,7 +79,7 @@ static void mg_link_irctab (session *sess, int focus);
 static session_gui static_mg_gui;
 static session_gui *mg_gui = NULL;	/* the shared irc tab */
 static int ignore_chanmode = FALSE;
-static const char chan_flags[] = { 'c', 'n', 't', 'i', 'm', 'l', 'k' };
+static const char chan_flags[] = { 'c', 'n', 't', 's', 'i', 'u', 'm', 'R', 'M', 'W', 'C', 'N', 'l', 'k' };
 
 static chan *active_tab = NULL;	/* active tab */
 GtkWidget *parent_window = NULL;			/* the master window */
@@ -1946,7 +1946,7 @@ mg_flagbutton_cb (GtkWidget *but, char *flag)
 		return;
 
 	sess = current_sess;
-	mode = tolower ((unsigned char) flag[0]);
+	mode = flag[0];
 
 	switch (mode)
 	{
@@ -2043,8 +2043,15 @@ mg_create_chanmodebuttons (session_gui *gui, GtkWidget *box)
 	gui->flag_c = mg_create_flagbutton (_("Filter Colors"), box, "c");
 	gui->flag_n = mg_create_flagbutton (_("No outside messages"), box, "n");
 	gui->flag_t = mg_create_flagbutton (_("Topic Protection"), box, "t");
+	gui->flag_s = mg_create_flagbutton (_("Secret Channel"), box, "s");
 	gui->flag_i = mg_create_flagbutton (_("Invite Only"), box, "i");
+	gui->flag_u = mg_create_flagbutton (_("Disable Quit/Part Messages"), box, "u");
 	gui->flag_m = mg_create_flagbutton (_("Moderated"), box, "m");
+	gui->flag_R = mg_create_flagbutton (_("Registered Only"), box, "R");
+	gui->flag_M = mg_create_flagbutton (_("Mute Unregistered"), box, "M");
+	gui->flag_W = mg_create_flagbutton (_("Mute Unregistered Except Webchat"), box, "W");
+	gui->flag_C = mg_create_flagbutton (_("No CTCP"), box, "C");
+	gui->flag_N = mg_create_flagbutton (_("No Notices"), box, "N");
 	gui->flag_b = mg_create_flagbutton (_("Ban List"), box, "b");
 
 	gui->flag_k = mg_create_flagbutton (_("Keyword"), box, "k");
